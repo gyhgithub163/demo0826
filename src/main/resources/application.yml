@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tianjin?useUnicode=true&useSSL=true&serverTimezone=UTC
+    username: root
+    password: root
+
+
+server:
+  port: 8083
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+---
+spring:
+  profiles: prod
+server:
+  port: 8082

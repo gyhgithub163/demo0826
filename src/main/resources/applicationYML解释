@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tianjin?useUnicode=true&useSSL=true&serverTimezone=UTC
+    username: root
+    password: root
+
+
+server:
+  port: 8083
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+---
+spring:
+  profiles: prod
+server:
+  port: 8082
+
+知识1:    ---代表分割符     文件中用了两个分隔符，把文件分成了三个空间   最上面为公共空间。
+知识2:    spring:
+            profiles: dev   设置第二个空间为 开发环境。
+          spring:
+            profiles: prod  设置第三个空间为 生产环境。
+知识3:     spring:
+              profiles:
+                active: dev  激活dev环境，开发环境。
+知识4:     server:
+           port: 8083  设置端口。
+知识5:     mybatis:
+           mapper-locations: classpath:/mapper/*.xml   设置持久层实现类的存放目录。
+
+知识6:       datasource:
+            driver-class-name: com.mysql.cj.jdbc.Driver    数据库驱动
+            url: jdbc:mysql://localhost:3306/tianjin?useUnicode=true&useSSL=true&serverTimezone=UTC   数据库URL
+            username: root  数据库用户名
+            password: root  数据库密码
